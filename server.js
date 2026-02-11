@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
-const data = require("data-service.js");
+const data = require("./data-service");
 
 const app = express();
 dotenv.config();
@@ -27,9 +27,15 @@ app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "Views", "about.html"));
 });
 
-// mangers route
+// managers route
 app.get("/managers", (req, res) => {
-  res.json({isManager: true});
+    res.send("test");
+    //res.json({isManager: true});
+});
+
+// employees route
+app.get("/employees", (req, res) => {
+    res.send("test");
 });
 
 // setup server
