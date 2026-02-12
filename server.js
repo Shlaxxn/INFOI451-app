@@ -19,12 +19,12 @@ app.use(express.static(path.join(__dirname, "Public")));
 
 // home route
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "Views", "home.html"));
+  res.sendFile(path.join(__dirname, "views", "home.html"));
 });
 
 // about route
 app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "Views", "about.html"));
+  res.sendFile(path.join(__dirname, "views", "about.html"));
 });
 
 // employees route
