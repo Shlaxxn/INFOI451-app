@@ -27,18 +27,53 @@ app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "Views", "about.html"));
 });
 
-// managers route
-app.get("/managers", (req, res) => {
-    res.send("test");
-    //res.json({isManager: true});
-});
-
 // employees route
 app.get("/employees", (req, res) => {
-    res.send("test");
+  data
+    .getAllEmployees()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+
+  // res.send("Hello");
 });
 
-// setup server
-app.listen(HTTP_PORT, () => {
-  console.log(`App listening on ${HTTP_PORT}:`);
+// managers route
+app.get("/managers", (req, res) => {
+  data
+    .getManagers()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
 });
+
+// departments route
+app.get("/departments", (req, res) => {
+  data
+    .getDepartments()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
+
+// setup server
+data
+  .initialize()
+  .then(function () {
+    app.listen(HTTP_PORT, function () {
+      console.log(`App listening on port: ${HTTP_PORT}`);
+    });
+  })
+  .catch(function (err) {
+    console.log(`Unable to start server: ${err}`);
+  });
