@@ -27,13 +27,7 @@ app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "about.html"));
 });
 
-pp.get("/employees/add", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "addEmployee.html"));
-});
 
-pp.get("/images/add", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "addImage.html"));
-});
 
 // employees route
 app.get("/employees", (req, res) => {
@@ -73,6 +67,15 @@ app.get("/departments", (req, res) => {
     });
 });
 
+app.get("/employees/add", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "addEmployee.html"));
+});
+
+app.get("/images/add", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "addImage.html"));
+});
+
+
 
 // setup server
 data
@@ -85,3 +88,4 @@ data
   .catch(function (err) {
     console.log(`Unable to start server: ${err}`);
   });
+
