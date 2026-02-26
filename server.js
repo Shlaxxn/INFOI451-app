@@ -27,6 +27,14 @@ app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "about.html"));
 });
 
+pp.get("/employees/add", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "addEmployee.html"));
+});
+
+pp.get("/images/add", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "addImage.html"));
+});
+
 // employees route
 app.get("/employees", (req, res) => {
   data
